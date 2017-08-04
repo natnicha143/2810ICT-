@@ -1,0 +1,161 @@
+\documentclass[12pt, a4]{report}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.8in]{geometry}
+\def\thesection{\arabic{section}}
+\setcounter{tocdepth}{4}
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+\usepackage{svg}
+% Below are for the code blocks
+\usepackage{listings}
+\usepackage{courier}
+\usepackage{verbatim}
+\usepackage{color}
+\usepackage{rotating}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.5,0.92}
+\definecolor{bittersweet}{rgb}{1.0, 0.44, 0.37}
+\definecolor{cosmiclatte}{rgb}{0.93, 0.93, 0.93}
+\definecolor{eggshell}{rgb}{0.94, 0.94, 0.9}
+\definecolor{fandango}{rgb}{0.71, 0.2, 0.54}
+
+\lstdefinestyle{mystyle}{
+	backgroundcolor=\color{cosmiclatte},   
+	commentstyle=\color{codegreen},
+	keywordstyle=\color{fandango}\small,
+	numberstyle=\tiny\color{codegray},
+	stringstyle=\color{codepurple},
+	basicstyle=\ttfamily\footnotesize,
+	breakatwhitespace=false,        
+	breaklines=true,               
+	captionpos=b,                    
+	keepspaces=true,  
+	numbers=left,                    
+	numbersep=5pt,                  
+	showspaces=false,                
+	showstringspaces=false,
+	showtabs=false,                  
+	tabsize=2
+}
+
+\lstset{style=mystyle}
+
+\title{2810, Software Technologies Assignment 1}
+\author{Zaymon Foulds-Cook, s5017391}%\thanks{}}
+\date{\today}
+
+\begin{document}
+
+\begin{titlepage}
+	\maketitle
+\end{titlepage}
+ \tableofcontents
+\pagebreak
+\section{Software Technologies Assignment 1}
+\subsection{Problem Statement}
+	\par
+	
+\subsection{User Requirements}
+	\textbf{The following list itemizes the user requirements for the implementation of the Ladder-gram program}
+	\begin{itemize}
+		\item The user should be able to interact with the program by specifying the start and goal word
+	\end{itemize}
+	
+\subsection{Software Requirements}
+	\textbf{The following list itemizes the software requirements for the implementation of the Ladder-gram program}
+	\begin{itemize}
+		\item The program will notify the user if the inputs are invalid
+		\item The program will notify the user if a solution was found
+		\item If a valid solution is found the program will print it to the console
+	\end{itemize}
+	\pagebreak
+	
+\subsection{Software Design}
+	\subsubsection{High Level Design - Logical Block Diagram \textbar{} Ladder-gram}
+	\begin{comment}
+				\begin{figure}[h]
+				\centering
+				\includegraphics[scale=0.6]{Logical_Block_Laddergram}
+				\caption{Logical block diagram for the Python implementation of Ladder-gram}
+				\end{figure}
+	\end{comment}
+
+	\pagebreak
+
+	\subsubsection{Structure Chart - UML \textbar{} Ladder-gram}
+	\paragraph{}
+	\begin{comment}
+			\begin{figure}[h]
+			\centering
+			\includegraphics[scale=0.7]{UMLLAD}
+			\caption{UML diagram for the Python implementation of Ladder-gram}
+			\end{figure}
+	\end{comment}
+
+
+	\subsubsection{List all functions in the software}
+	\textbf{	Functions in the Ladder-gram Program}
+	\begin{enumerate}
+		\item
+			\textbf{Function name}
+			\textbar{}  description
+			\par Input Parameters: None
+			\par Side Effects:
+			\begin{itemize}
+				\item side effect 1
+			\end{itemize}
+			\par Returns: void
+	\end{enumerate}
+	
+	\begin{comment}
+				\item
+					\textbf{}
+					\textbar{}  
+					\par Input Parameters:
+					\par Side Effects
+					\begin{itemize}
+					\item 
+					\end{itemize}
+					\par Returns:
+	\end{comment}
+	
+	\subsubsection{List all of the data structures in the Ladder-gram program}
+		\begin{enumerate}
+				\item
+					\textbf{Type}
+					\textbar{} Purpose
+					\par Used in the following functions:
+					\begin{itemize}
+						\item item 1
+					\end{itemize}
+		\end{enumerate}
+	
+
+	\subsubsection{Detailed Design}
+	
+	
+	\textbf{Generate Solutions Pseudo-code}
+	
+	\begin{comment}
+			\begin{figure}[h]
+			\lstinputlisting[language=Python]{pseudocode_New.py}
+			\caption{Psuedo-code for the generate solutions algorithm}
+			\end{figure}
+	\end{comment}
+
+	
+	\pagebreak
+	\subsection{Requirement Acceptance Tests}
+
+	\subsection{Detailed Software Testing}
+
+	
+	\subsection{User Instructions}
+
+
+
+	
+\end{document}
