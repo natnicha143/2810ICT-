@@ -26,18 +26,19 @@ def find(word, words, seen, target, path):
       return True
     path.pop()
 
-fname = input("Enter dictionary name: ")
+# fname = input("Enter dictionary name: ")
+fname = "dictionary.txt"
 file = open(fname)
 lines = file.readlines()
-while True:
-  start = input("Enter start word:")
-  words = []
-  for line in lines:
-    word = line.rstrip()
-    if len(word) == len(start):
-      words.append(word)
-  target = input("Enter target word:")
-  break
+
+start = input("Enter start word:")
+words = []
+for line in lines:
+  word = line.rstrip()
+  if len(word) == len(start):
+    words.append(word)
+target = input("Enter target word:")
+
 
 count = 0
 path = [start]
