@@ -9,6 +9,7 @@
 \contentsline {subsubsection}{List all functions in the software}{4}
 \contentsline {subsubsection}{List all of the data structures in the Ladder-gram program}{4}
 \contentsline {subsubsection}{Detailed Design}{4}
-\contentsline {subsection}{\numberline {1.5}Requirement Acceptance Tests}{5}
-\contentsline {subsection}{\numberline {1.6}Detailed Software Testing}{5}
-\contentsline {subsection}{\numberline {1.7}User Instructions}{5}
+\contentsline {subsection}{\numberline {1.5}Configuration Management and Version Control}{5}
+\contentsline {subsection}{\numberline {1.6}Unit Tests}{5}
+\contentsline {subsection}{\numberline {1.7}Requirement Acceptance Tests}{5}
+\contentsline {subsection}{\numberline {1.8}User Instructions}{5}
