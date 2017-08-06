@@ -1,13 +1,12 @@
 import unittest
-import word_ladder
+import word_ladder_functions as word_ladder
 
-class word_ladder_test(unittest.TestCase):
-    # def test_solution_length(self):
-    #     self.assertEqual(find(), 3) 
+class WordLadderTest(unittest.TestCase):
 
     def same_function(self):
+        self.assertEqual(word_ladder.same("lead", "gold"), 4)
         self.assertEqual(word_ladder.same("lead", "lead"), 0)
-        self.assertEqual(word_ladder.same("lead", "gold"), 3)
+
 
 if __name__ == '__main__':
-    unittest.main(exit=True)
+    unittest.main()
