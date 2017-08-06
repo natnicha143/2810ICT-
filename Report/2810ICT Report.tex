@@ -12,6 +12,11 @@
 \usepackage{color}
 \usepackage{rotating}
 
+% Below are table config
+\setlength{\arrayrulewidth}{0.5mm}
+\setlength{\tabcolsep}{10pt}
+\renewcommand{\arraystretch}{1.5}
+
 \definecolor{codegreen}{rgb}{0,0.6,0}
 \definecolor{codegray}{rgb}{0.5,0.5,0.5}
 \definecolor{codepurple}{rgb}{0.58,0,0.82}
@@ -55,14 +60,14 @@
 \pagebreak
 \section{Software Technologies Assignment 1}
 \subsection{Problem Statement}
-	\par
+	\par 
 	
 \subsection{User Requirements}
 	\textbf{The following list itemizes the user requirements for the implementation of the Ladder-gram program}
 	\begin{itemize}
 		\item The user should be able to interact with the program by specifying the start and goal word
-		\item The user should be prompted with an option to supply a list of words that cannot be used in the path solution
-		\item The user should be prompted with an option to find the shortest path from start word to goal word
+		\item The user should be able to select an option to supply a list of words that cannot be used in the path solution
+		\item The user should be able to select an option to find the shortest path from start word to goal word
 	\end{itemize}
 	
 \subsection{Software Requirements}
@@ -71,6 +76,9 @@
 		\item The program will notify the user if the inputs are invalid
 		\item The program will notify the user if a solution was found
 		\item If a valid solution is found the program will print it to the console
+		\item If the user selects the shortest path solution, the program will print the shortest path to the console
+		\item If the user chooses to input a list of unusable words, the program will remove those words from the solution's list
+		\item The program will report the length of the solution found 
 	\end{itemize}
 	\pagebreak
 	
@@ -126,11 +134,11 @@
 	\subsubsection{List all of the data structures in the Ladder-gram program}
 		\begin{enumerate}
 				\item
-					\textbf{Type}
+					\textbf{Dictionary}
 					\textbar{} Purpose
 					\par Used in the following functions:
 					\begin{itemize}
-						\item item 1
+						\item find
 					\end{itemize}
 		\end{enumerate}
 	
@@ -150,8 +158,27 @@
 	
 	\pagebreak
 	\subsection{Configuration Management and Version Control}
+		\par 
+		The development of this program required the use of version control software to evenly distribute tasks, as well as monitor the changes through a log. GitHub was designed for users as a way to manage documents, programs and other information. GitHub was neccessary for sharing of files and the ability to compare files and identify differences and merge changes if needed prior to commit. Version control was used to ensure each developer could work on tasks individually as well, even after finishing a formal collaboration. The software records a log of past commits pushed to the respository which alows for backtracking of file versions.
 	
 	\subsection{Unit Tests}
+	
+
+	
+		\begin{tabular}{ |p{0.5cm}|p{4cm}|p{5cm}|p{5cm}| }
+
+			\hline
+			No. & Test Case & Expected Results & Actual Results \\
+			\hline
+			1.0 & hello &AFG & OK \\
+			1.1 & AX   & ALA & blank\\
+			1.2 &AL & ALB & blank \\
+			2.0    &DZ & DZA & blank \\
+			2.1 & AS & ASM & blank\\
+			3.0 & AD & AND   & blank \\
+			3.1 & AO & AGO & blank\\
+			\hline
+		\end{tabular}
 		
 	\subsection{Requirement Acceptance Tests}
 
