@@ -31,6 +31,7 @@ def find(word, words, seen, target, path, outer_fitness=0):
     current_path += build(word[:i] + "." + word[i + 1:], words, seen, current_path)
   if len(current_path) == 0:
     return False
+  
   # Sorted in reverse to put best candidate words first
   current_path = sorted([(same(w, target), w) for w in current_path], reverse=True)
 

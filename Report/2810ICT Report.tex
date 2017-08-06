@@ -84,55 +84,77 @@
 	\pagebreak
 	
 \subsection{Software Design}
-	\subsubsection{High Level Design - Logical Block Diagram \textbar{} Ladder-gram}
-	\begin{comment}
-				\begin{figure}[h]
-				\centering
-				\includegraphics[scale=0.6]{Logical_Block_Laddergram}
-				\caption{Logical block diagram for the Python implementation of Ladder-gram}
-				\end{figure}
-	\end{comment}
+	\subsubsection{High Level Design - Logical Block Diagram}
 
+	\begin{figure}[!h]
+	\centering
+	\includegraphics[scale=0.6]{Logical_Block_Laddergram}
+	\caption{Logical block diagram for the Python implementation of Ladder-gram}
+	\end{figure}
+				
 	\pagebreak
 
-	\subsubsection{Structure Chart - UML \textbar{} Ladder-gram}
+	\subsubsection{Structure Chart - UML}
 	\paragraph{}
-	\begin{comment}
-			\begin{figure}[h]
-			\centering
-			\includegraphics[scale=0.7]{UMLLAD}
-			\caption{UML diagram for the Python implementation of Ladder-gram}
-			\end{figure}
-	\end{comment}
+
+	\begin{figure}[!h]
+	\centering
+	\includegraphics[scale=0.7]{UML}
+	\caption{UML diagram for the Python implementation of Ladder-gram}
+	\end{figure}
 
 
 	\subsubsection{List all functions in the software}
 	\textbf{	Functions in the Ladder-gram Program}
 	\begin{enumerate}
 		\item
-			\textbf{Function name}
-			\textbar{}  description
-			\par Input Parameters: None
+			\textbf{populate\_dictionary}
+			\textbar{}  Function that takes in a filename and a word length and returns a list that contains all words in the file of the specified length.
+			\par Input Parameters: filename, length
 			\par Side Effects:
 			\begin{itemize}
-				\item side effect 1
+				\item Populate words list
 			\end{itemize}
-			\par Returns: void
+			\par Returns: List
+		\item
+			\textbf{same}
+			\textbar{}  Function that determines how similar two words are by comparing characters in-place. Returns number of characters that are the same.
+			\par Input Parameters: str1, str2
+			\par Side Effects: None
+			\par Returns: integer
+		\item
+			\textbf{build}
+			\textbar{}  Function that returns a list of all words that are one letter away from the last word in the path and have not been seen before.
+			    Function also calculates the fitness of each word and adds it with the word in a tuple.
+			\par Input Parameters: pattern $($regex pattern$)$, words, seen, path
+			\par Side Effects: None
+			\par Returns: List of tuples
+		\item
+			\textbf{find}
+			\textbar{}  Recursive function that finds a path from one word two another of the same length by going through intermediary words which are one character different.
+			\par Input Parameters:
+			\par Side Effects
+			\begin{itemize}
+				\item `Path' global variable gets modified 
+				\item `Seen' global variable gets modified
+			\end{itemize}
+			\par Returns: Boolean
 	\end{enumerate}
 	
 	\begin{comment}
-				\item
-					\textbf{}
-					\textbar{}  
-					\par Input Parameters:
-					\par Side Effects
-					\begin{itemize}
-					\item 
-					\end{itemize}
-					\par Returns:
+			\item
+				\textbf{}
+				\textbar{}  
+				\par Input Parameters:
+				\par Side Effects
+				\begin{itemize}
+				\item 
+				\end{itemize}
+				\par Returns:
 	\end{comment}
 	
 	\subsubsection{List all of the data structures in the Ladder-gram program}
+		\par Finish this!
 		\begin{enumerate}
 				\item
 					\textbf{Dictionary}
@@ -140,10 +162,35 @@
 					\par Used in the following functions:
 					\begin{itemize}
 						\item find
+						\item build
+					\end{itemize}
+				\item
+					\textbf{List}
+					\textbar{} Purpose
+					\par Used in the following functions:
+					\begin{itemize}
+						\item find
+						\item build
+						\item populate\_dictionary
+					\end{itemize}
+				\item
+					\textbf{Tuple}
+					\textbar{} Purpose
+					\par Used in the following functions:
+					\begin{itemize}
+						\item find
+						\item 
+					\end{itemize}
+				\item
+					\textbf{String}
+					\textbar{} Purpose
+					\par Used in the following functions:
+					\begin{itemize}
+						\item find
 					\end{itemize}
 		\end{enumerate}
 	
-
+		
 	\subsubsection{Detailed Design}
 	
 	
