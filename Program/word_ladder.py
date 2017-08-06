@@ -23,7 +23,7 @@ def build(pattern, words, seen, path):
           if re.search(pattern, word) and word not in seen.keys() and
           word not in path]
 
-def find(word, words, seen, target, path):
+def find(word, words, seen, target, path, outer_fitness=0):
   current_path = []
   for i in range(len(word)):
     current_path += build(word[:i] + "." + word[i + 1:], words, seen, current_path)
@@ -33,19 +33,19 @@ def find(word, words, seen, target, path):
   current_path = sorted([(same(w, target), w) for w in current_path], reverse=True)
 
   # Looks for target word
-  for (match, item) in current_path:
-    if match >= len(target) - 1:
-      if match == len(target) - 1:
-        path.append(item)
+  for (fitness, item) in current_path:
+    if fitness == len(target) - 1:
+      path.append(item)
       return True
     seen[item] = True
   
   # Otherwise recurses through words in current path
-  for (match, item) in current_path:
-    path.append(item)
-    if find(item, words, seen, target, path):
-      return True
-    path.pop()
+  for (fitness, item) in current_path:
+    if fitness >= outer_fitness:
+      path.append(item)
+      if find(item, words, seen, target, path, fitness):
+        return True
+      path.pop()
 
 # Main
 if __name__ == "__main__":
