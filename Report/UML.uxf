@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.2">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>560</x>
+      <y>240</y>
+      <w>370</w>
+      <h>200</h>
+    </coordinates>
+    <panel_attributes>LadderGram
+--
++ words[]: List
++ start_word: String
++ end_word: String
++ path: List
++ seen: Dictionary
+--
++ populate_dictionary(filename, length)
++ same(item, target)
++ build(pattern, words, seen, path)
++ find(word, words, seen, target, path, outer_fitness)
+
+
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>
