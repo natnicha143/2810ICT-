@@ -9,7 +9,7 @@
       <w>370</w>
       <h>200</h>
     </coordinates>
-    <panel_attributes>LadderGram
+    <panel_attributes>word_ladder
 --
 + words[]: List
 + start_word: String
