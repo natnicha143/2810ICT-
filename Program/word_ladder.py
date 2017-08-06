@@ -14,6 +14,7 @@ def populate_dictionary(filename, length):
   file.close()
   return words
 
+
 def same(item, target):
   return len([c for (c, t) in zip(item, target) if c == t])
 
@@ -22,6 +23,7 @@ def build(pattern, words, seen, path):
   return [word for word in words
           if re.search(pattern, word) and word not in seen.keys() and
           word not in path]
+
 
 def find(word, words, seen, target, path, outer_fitness=0):
   current_path = []

@@ -65,9 +65,10 @@
 \subsection{User Requirements}
 	\textbf{The following list itemizes the user requirements for the implementation of the Ladder-gram program}
 	\begin{itemize}
-		\item The user should be able to interact with the program by specifying the start and goal word
-		\item The user should be able to select an option to supply a list of words that cannot be used in the path solution
-		\item The user should be able to select an option to find the shortest path from start word to goal word
+		\item The user should be able to interact with the program by specifying the dictionary file name$($without the .txt extension$)$
+		\item The user should be able to interact with the program by specifying the source and target word.
+		\item The user should be able to supply a list of words that cannot be used in the path solution by specifying the file name$($without the .txt extension$)$ and placing it in the same directory as the program file.
+		\item The user will be displayed with the shortest path from source word to target word as the solution.
 	\end{itemize}
 	
 \subsection{Software Requirements}
@@ -76,8 +77,8 @@
 		\item The program will notify the user if the inputs are invalid
 		\item The program will notify the user if a solution was found
 		\item If a valid solution is found the program will print it to the console
-		\item If the user selects the shortest path solution, the program will print the shortest path to the console
-		\item If the user chooses to input a list of unusable words, the program will remove those words from the solution's list
+		\item The program will default to printing the shortest path to the console
+		\item If the user chooses to input a list of banned words, the program will remove those words from the solution's list
 		\item The program will report the length of the solution found 
 	\end{itemize}
 	\pagebreak
@@ -161,7 +162,7 @@
 		\par 
 		The development of this program required the use of version control software to evenly distribute tasks, as well as monitor the changes through a log. GitHub was designed for users as a way to manage documents, programs and other information. GitHub was neccessary for sharing of files and the ability to compare files and identify differences and merge changes if needed prior to commit. Version control was used to ensure each developer could work on tasks individually as well, even after finishing a formal collaboration. The software records a log of past commits pushed to the respository which alows for backtracking of file versions.
 	
-	\subsection{Unit Tests}
+	\subsection{Unit Test}
 
 
 		\begin{tabular}{ |p{0.5cm}|p{5cm}|p{5cm}|p{5cm}| }
@@ -178,10 +179,37 @@
 			\hline
 		\end{tabular}
 		
-	\subsection{Requirement Acceptance Tests}
-
+	\subsection{Requirement Acceptance Test}
+	
+		\begin{tabular}{ |p{0.5cm}|p{7.25cm}|p{2.5cm}|p{2.5cm}|p{2cm}| }
+			\hline
+			No. & Test & Implemented (Full/Partial/None) & Test Results (Pass/Fail) & Comments \\
+			\hline
+			1 & The program will be able to read in the dictionary by specifying its name & Full & Pass &  \\
+			2 & Display an error message if file name is invalid & Full & Pass  & \\
+			3 & Read in a list of supplied words that are banned from the user & Full & Pass & \\
+			4 & Display an error message if source and target word are not of equal lengths & Full & Pass & \\
+			5 & Display an error message if source or target do not exist within the dictionary & Full & Pass & \\
+			6 & Display an error message if input words contain numbers or special characters & Full & Pass & \\
+			7 & Input word are case insensitive & Full & Pass & \\
+			\hline
+		\end{tabular}
+	
+	\pagebreak
 	\subsection{User Instructions}
-
+		\begin{itemize}
+			\item Open a new console 
+			\item Change directory into the Program folder $($laddergram$)$.
+			\item Ensure dictionary file is in current program directory
+			\item Modify ``banned\_words.txt" to have all words not allowed to be used.  
+			\item Run the script ladder\_grsam.py by typing ``python ladder\_gram.py".
+			\item Follow prompts to enter dictionary name (without .txt file extension).
+			\item Follow prompts to enter banned words file name (without .txt file extension).
+			\item Follow prompts to enter a source word and target word.
+			\item For files that do not exist within current directory, an error message will be displayed.
+			\item For words that do not exist within the dictionary, an error message will be displayed. 
+			\item For words of different length, an error message will be displayed. 
+		\end{itemize}
 
 
 	
