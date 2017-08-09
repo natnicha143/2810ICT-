@@ -24,6 +24,14 @@ def build(pattern, words, seen, path):
           if re.search(pattern, word) and word not in seen.keys() and
           word not in path]
 
+def build_basic(words, visited, current_word):
+  neighbors = []
+  for word in words:
+    if word not in visited:
+      if same(word, current_word) == len(word)-1:
+        neighbors.append(word)
+  return neighbors
+
 
 def find(word, words, seen, target, path, outer_fitness=0):
   current_path = []
@@ -49,6 +57,57 @@ def find(word, words, seen, target, path, outer_fitness=0):
       if find(item, words, seen, target, path, fitness):
         return True
       path.pop()
+
+# # Pass in the forward path and the parent graph to determine the shortest path
+# def back_trace(start_word, target_word, parent):
+
+#   path = [target_word]
+#   vertex = path[-1]
+#   while vertex != start_word:
+#     path.append(parent[vertex])
+#     vertex = path[-1]
+#   path.reverse()
+#   return path
+
+
+def short_path(words, start_word, target_word):
+  queue = []
+  visited = set()
+  parent = {}
+
+  queue.append([start_word])
+  while queue:
+    path = queue.pop(0)
+    vertex = path[-1]
+    if vertex not in visited:
+      visited.add(vertex)
+    if vertex == target_word:
+      return path
+    neighbors = build_basic(words, visited, vertex)
+    for neighbor in neighbors:
+      if neighbor not in visited:
+        new_path = list(path)
+        new_path.append(neighbor)
+        queue.append(new_path)
+
+
+
+  # queue.append(start_word)
+  # while queue:
+  #   vertex = queue.pop(0)
+  #   if vertex not in visited:
+  #     visited.add(vertex)
+  #   if vertex == target_word:
+  #     return back_trace(start_word, target_word, parent)
+  #   neighbors = build_basic(words, visited, vertex)
+  #   for neighbor in neighbors:
+  #     if neighbor not in visited:
+  #       parent[neighbor] = vertex
+  #       queue.append(neighbor)
+
+
+
+
 
 # Main
 if __name__ == "__main__":
@@ -88,8 +147,9 @@ if __name__ == "__main__":
 
     path = [start_word]
     seen = {start_word: True}
-    if find(start_word, words, seen, end_word, path):
-      path.append(end_word)
-      print(len(path) - 1, path)
-    else:
-      print("No path found")
+    print(short_path(words, start_word, end_word))
+    # if find(start_word, words, seen, end_word, path):
+    #   path.append(end_word)
+    #   print(len(path) - 1, path)
+    # else:
+    #   print("No path found")
