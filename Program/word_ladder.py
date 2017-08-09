@@ -1,5 +1,5 @@
 import re
-
+import queue
 
 def populate_dictionary(filename, length):
   fname = "dictionary.txt"
@@ -25,11 +25,11 @@ def build(pattern, words, seen, path):
           word not in path]
 
 def build_basic(words, visited, current_word):
-  neighbors = []
+  neighbors = set()
   for word in words:
     if word not in visited:
       if same(word, current_word) == len(word)-1:
-        neighbors.append(word)
+        neighbors.add(word)
   return neighbors
 
 
@@ -71,24 +71,24 @@ def find(word, words, seen, target, path, outer_fitness=0):
 
 
 def short_path(words, start_word, target_word):
-  queue = []
-  visited = set()
+  q = queue.Queue()
+  visited = {}
   parent = {}
-
-  queue.append([start_word])
-  while queue:
-    path = queue.pop(0)
+  q.put([start_word])
+  while q:
+    path = q.get()
     vertex = path[-1]
     if vertex not in visited:
-      visited.add(vertex)
-    if vertex == target_word:
+      visited[vertex] = True
+    if same(vertex, target_word) == len(target_word)-1:
       return path
     neighbors = build_basic(words, visited, vertex)
     for neighbor in neighbors:
       if neighbor not in visited:
+        visited[neighbor] = True
         new_path = list(path)
         new_path.append(neighbor)
-        queue.append(new_path)
+        q.put(new_path)
 
 
 
@@ -147,7 +147,10 @@ if __name__ == "__main__":
 
     path = [start_word]
     seen = {start_word: True}
-    print(short_path(words, start_word, end_word))
+
+    path = short_path(words, start_word, end_word)
+    path.append(end_word)
+    print(path)
     # if find(start_word, words, seen, end_word, path):
     #   path.append(end_word)
     #   print(len(path) - 1, path)
