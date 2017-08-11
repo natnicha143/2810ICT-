@@ -39,17 +39,14 @@ def find(word, words, seen, target, path, outer_fitness=0):
     current_path += build(word[:i] + "." + word[i + 1:], words, seen, current_path)
   if len(current_path) == 0:
     return False
-  
   # Sorted in reverse to put best candidate words first
   current_path = sorted([(same(w, target), w) for w in current_path], reverse=True)
-
   # Looks for target word
   for (fitness, item) in current_path:
     if fitness == len(target) - 1:
       path.append(item)
       return True
     seen[item] = True
-  
   # Otherwise recurses through words in current path
   for (fitness, item) in current_path:
     if fitness >= outer_fitness:
@@ -58,22 +55,10 @@ def find(word, words, seen, target, path, outer_fitness=0):
         return True
       path.pop()
 
-# # Pass in the forward path and the parent graph to determine the shortest path
-# def back_trace(start_word, target_word, parent):
-
-#   path = [target_word]
-#   vertex = path[-1]
-#   while vertex != start_word:
-#     path.append(parent[vertex])
-#     vertex = path[-1]
-#   path.reverse()
-#   return path
-
 
 def short_path(words, start_word, target_word):
   q = queue.Queue()
   visited = {}
-  parent = {}
   q.put([start_word])
   while q:
     path = q.get()
@@ -89,24 +74,6 @@ def short_path(words, start_word, target_word):
         new_path = list(path)
         new_path.append(neighbor)
         q.put(new_path)
-
-
-
-  # queue.append(start_word)
-  # while queue:
-  #   vertex = queue.pop(0)
-  #   if vertex not in visited:
-  #     visited.add(vertex)
-  #   if vertex == target_word:
-  #     return back_trace(start_word, target_word, parent)
-  #   neighbors = build_basic(words, visited, vertex)
-  #   for neighbor in neighbors:
-  #     if neighbor not in visited:
-  #       parent[neighbor] = vertex
-  #       queue.append(neighbor)
-
-
-
 
 
 # Main
