@@ -1,5 +1,6 @@
 import re
 import queue
+from warnings import warn
 
 def populate_dictionary(filename, length):
   fname = "dictionary.txt"
@@ -76,50 +77,56 @@ def short_path(words, start_word, target_word):
         q.put(new_path)
 
 
+def init():
+  # Input and validation
+  start_word = input("Please enter staring word: ").lower().rstrip()
+  if not start_word.isalpha():
+    warn("Input words cannot contain numbers or special characters", UserWarning)
+    quit()
+  end_word = input("Please enter target word: ").lower().rstrip()
+  if not end_word.isalpha():
+    warn("Input words cannot contain numbers or special characters", UserWarning)
+    quit()
+  if start_word is end_word:
+    warn("Start and target words cannot be the same", UserWarning)
+    quit()
+  if len(start_word) != len(end_word):
+    warn("Start and target words must be the same length", UserWarning)
+    quit()
+  return [start_word, end_word]
+
 # Main
 if __name__ == "__main__":
-    # filename = input("Please enter dictionary name (without .txt): ")
-    # filename += ".txt"
-    # Check filename
-    
-    ## While Testing 
-    filename = "dictionary.txt"
-    # start_word = "hide"
-    # end_word = "seek"
+  # Get dictionary file name
+  filename = input("Please enter dictionary name (without .txt): ")
+  filename += ".txt"
+  # Check file exists
+  file_desc = open(filename)
+  file_desc.close()
 
-    file_desc = open(filename)
-    file_desc.close()
+  # Get user input
+  user_input = init()
 
-    # Input and validation
-    start_word = input("Please enter staring word: ").lower().rstrip()
-    if not start_word.isalpha():
-      print("Input words cannot contain numbers or special characters")
-      quit()
-    end_word = input("Please enter target word: ").lower().rstrip()
-    if not end_word.isalpha():
-      print("Input words cannot contain numbers or special characters")
-      quit()
-    if start_word is end_word:
-      print("Start and target words cannot be the same")
-      quit()
-    if len(start_word) != len(end_word):
-      print("Start and target words must be the same length")
-      quit()
+  # Extract start/end words
+  start_word = user_input[0]
+  end_word = user_input[1]
 
-    words = populate_dictionary(filename, len(start_word))
-    # Check if the target exists before searching for a path
-    # if end_word not in words:
-    #   print("Target word does not exist in the dictionary")
-    #   quit()
+  # Generate the word list
+  words = populate_dictionary(filename, len(start_word))
+  # Check if the target exists before searching for a path
+  if end_word not in words:
+    warn("Target word does not exist in the dictionary", UserWarning)
+    quit()
 
-    path = [start_word]
-    seen = {start_word: True}
 
-    path = short_path(words, start_word, end_word)
-    path.append(end_word)
-    print(path)
-    # if find(start_word, words, seen, end_word, path):
-    #   path.append(end_word)
-    #   print(len(path) - 1, path)
-    # else:
-    #   print("No path found")
+  path = [start_word]
+  seen = {start_word: True}
+
+  path = short_path(words, start_word, end_word)
+  path.append(end_word)
+  print(path)
+  # if find(start_word, words, seen, end_word, path):
+  #   path.append(end_word)
+  #   print(len(path) - 1, path)
+  # else:
+  #   print("No path found")
