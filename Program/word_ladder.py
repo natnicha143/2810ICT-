@@ -87,7 +87,7 @@ def init():
   if not end_word.isalpha():
     warn("Input words cannot contain numbers or special characters", UserWarning)
     quit()
-  if start_word is end_word:
+  if start_word == end_word:
     warn("Start and target words cannot be the same", UserWarning)
     quit()
   if len(start_word) != len(end_word):
