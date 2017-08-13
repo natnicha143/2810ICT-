@@ -10,42 +10,54 @@ class TestUserInput(unittest.TestCase):
     # Mock input
     @patch('builtins.input', side_effect=['le1d', 'gold'])
     def test_user_input1(self, input):
+        # Assert that the raised UserWarning is correct for the test case
         with self.assertWarnsRegex(UserWarning, 'Input words cannot contain numbers or special characters'):
+         # Ensure the program exits after the warning
             with self.assertRaises(SystemExit):              
                 word_ladder.init()
     
     # Mock Input
     @patch('builtins.input', side_effect=['lead', 'go@d'])
     def test_user_input2(self, input):
+        # Assert that the raised UserWarning is correct for the test case
         with self.assertWarnsRegex(UserWarning, 'Input words cannot contain numbers or special characters'):
+            # Ensure the program exits after the warning
             with self.assertRaises(SystemExit):                 
                 word_ladder.init()
     
     # Mock Input
     @patch('builtins.input', side_effect=['he_s', 'as_da'])
     def test_user_input3(self, input):
+        # Assert that the raised UserWarning is correct for the test case
         with self.assertWarnsRegex(UserWarning, 'Input words cannot contain numbers or special characters'):
+            # Ensure the program exits after the warning
             with self.assertRaises(SystemExit):                 
                 word_ladder.init()
     
     # Mock Input
     @patch('builtins.input', side_effect=['hell3', 'ther3'])
     def test_user_input4(self, input):
+        # Assert that the raised UserWarning is correct for the test case
         with self.assertWarnsRegex(UserWarning, 'Input words cannot contain numbers or special characters'):
+            # Ensure the program exits after the warning
             with self.assertRaises(SystemExit):                 
                 word_ladder.init()
     
     # Mock Input
     @patch('builtins.input', side_effect=['lead', 'lead'])
     def test_user_input5(self, input):
+        # Assert that the raised UserWarning is correct for the test case
         with self.assertWarnsRegex(UserWarning, 'Start and target words cannot be the same'):
+            # Ensure the program exits after the warning
             with self.assertRaises(SystemExit):                 
                 word_ladder.init()
     
     # Mock Input
     @patch('builtins.input', side_effect=['hello', 'test'])
     def test_user_input6(self, input):
+        # Assert that the raised UserWarning is correct for the test case
         with self.assertWarnsRegex(UserWarning, 'Start and target words must be the same length'):
+            # Ensure the program exits after the warning
             with self.assertRaises(SystemExit):                 
                 word_ladder.init()
     
