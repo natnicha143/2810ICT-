@@ -108,15 +108,6 @@ class TestHelperFunctions(unittest.TestCase):
 
 
 
-class TestFindFunctions(unittest.TestCase):
-    def test_recursive_find_function(self):
-        print()
-
-
-    def test_bfs_find_function(self):
-        print()
-
-
 class TestSystem():
     # Mock all inputs
     def test_full_system_recursive(self):
