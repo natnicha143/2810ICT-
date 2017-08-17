@@ -109,8 +109,8 @@
 	\begin{enumerate}
 		\item
 			\textbf{populate\_dictionary}
-			\textbar{}  Function that takes in a filename and a word length and returns a list that contains all words in the file of the specified length.
-			\par Input Parameters: filename, length
+			\textbar{}  Function that takes in a filename, a word length and a banned file name, returns a list that contains all words in the file of the specified length and ignoring words that occur in the banned words file.
+			\par Input Parameters: filename, length, banned\_filename 
 			\par Side Effects:
 			\begin{itemize}
 				\item Populate words list
@@ -121,7 +121,7 @@
 			\textbar{}  Function that determines how similar two words are by comparing characters in-place. Returns number of characters that are the same.
 			\par Input Parameters: str1, str2
 			\par Side Effects: None
-			\par Returns: integer
+			\par Returns: Integer
 		\item
 			\textbf{build}
 			\textbar{}  Function that returns a list of all words that are one letter away from the last word in the path and have not been seen before.
@@ -129,17 +129,34 @@
 			\par Input Parameters: pattern $($regex pattern$)$, words, seen, path
 			\par Side Effects: None
 			\par Returns: List of tuples
+		\item 
+			\textbf{build\_basic}
+			\textbar{} Similar to build function except it does not return a tuple with fitness of the word.  
+			\par Input Parameters: words, visited, current\_word 
+			\par Side Effects: None 
+			\par Returns: Set of neighboring elements 
 		\item
 			\textbf{find}
 			\textbar{}  Recursive function that finds a path from one word two another of the same length by going through intermediary words which are one character different.
-			\par Input Parameters:
+			\par Input Parameters: word, words, seen, target, path, outer\_fitness
 			\par Side Effects
 			\begin{itemize}
 				\item `Path' global variable gets modified 
 				\item `Seen' global variable gets modified
 			\end{itemize}
 			\par Returns: Boolean
-	\end{enumerate}
+		\item
+			\textbf{short\_path}
+			\textbar{} Function that uses breadth-first search to find the shortest path of any given word pair. 
+			\par Input Parameters: words, start\_word, target\_word 
+			\par Side Effects: None
+			\par Returns: Path 
+		\item
+			\textbf{init}
+			\textbar{} Function that accepts user input and performs input validation.   
+			\par Input Parameters: None  
+			\par Side Effects: None
+			\par Returns: List
 	
 	\begin{comment}
 			\item
@@ -152,6 +169,8 @@
 				\end{itemize}
 				\par Returns:
 	\end{comment}
+	
+	\end{enumerate}
 	
 	\subsubsection{List all of the data structures in the Ladder-gram program}
 		\par Finish this!
@@ -173,20 +192,20 @@
 						\item build
 						\item populate\_dictionary
 					\end{itemize}
+				\item 
+					\textbf{Set}
+					\textbar{} Purpose 
+					\par Used in the following functions:
+					\begin{itemize}
+						\item build\_basic
+					\end{itemize}
 				\item
 					\textbf{Tuple}
 					\textbar{} Purpose
 					\par Used in the following functions:
 					\begin{itemize}
 						\item find
-						\item 
-					\end{itemize}
-				\item
-					\textbf{String}
-					\textbar{} Purpose
-					\par Used in the following functions:
-					\begin{itemize}
-						\item find
+						\item build
 					\end{itemize}
 		\end{enumerate}
 	
@@ -235,14 +254,14 @@
 			\hline
 			No. & Test Case & Expected Results & Actual Results \\
 			\hline
-			2.2 & Test build basic function  & & \\
-			2.3 & & & \\
-			3.0 & populate dictionary function &  &  \\
-			3.1 &  &  & \\
-			4.0 & build function &  &  \\
-			4.1 &  &  & \\
-			5.0 & find function &  &  \\
-			5.1 &  &  & \\
+			2.2 & Test build basic function & All words that are adjacent to the start word and not in visited dictionary. Checks correctness of function with and without keys in visited dictionary. & As expected. \\
+			2.3 & Test build function &  & As expected\\
+			2.4 & Test populate dictionary function & Reads in dictionary filename and checks the correct number of words present for each word length & As expected. \\
+			2.5 & Test populate dictionary function takes list of banned words & Reads in banned words list, and asserts that banned words are not present in the populated lists. & As expected. \\
+			3.0 & System tests &  &  \\
+			3.1 & Test full system recursively &  & \\
+			3.2 & Test full system breadth-first search &  &  \\
+			
 			\hline
 		\end{tabular}
 	\newpage
@@ -258,7 +277,7 @@
 			4 & Display an error message if source and target word are not of equal lengths & Full & Pass & \\
 			5 & Display an error message if source or target do not exist within the dictionary & Full & Pass & \\
 			6 & Display an error message if input words contain numbers or special characters & Full & Pass & \\
-			7 & Input word are case insensitive & Full & Pass & \\
+			7 & Input words are case insensitive & Full & Pass & \\
 			\hline
 		\end{tabular}
 	
@@ -267,11 +286,11 @@
 		\begin{itemize}
 			\item Open a new console 
 			\item Change directory into the Program folder.
-			\item Ensure dictionary file is in current program directory
+			\item Ensure dictionary file is in current program directory.
 			\item Modify ``banned\_words.txt" to have all words not allowed to be used.  
 			\item Run the script word\_ladder.py by typing ``python word\_ladder.py".
 			\item Follow prompts to enter dictionary name (without .txt file extension).
-			\item Follow prompts to enter banned words file name (without .txt file extension).
+			\item Follow prompts to enter banned words file name. 
 			\item Follow prompts to enter a source word and target word.
 			\item For files that do not exist within current directory, an error message will be displayed.
 			\item For words that do not exist within the dictionary, an error message will be displayed. 

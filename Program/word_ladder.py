@@ -122,7 +122,7 @@ if __name__ == "__main__":
   end_word = user_input[1]
 
   # Used Banned Words File?
-  banned_filename = input("Please enter a filename for banned words (without .txt). (Press enter if not required): ")
+  banned_filename = input("Please enter a filename for banned words. (Press enter if not required): ")
   if len(banned_filename) != 0:
     banned_fd = open(banned_filename)
     banned_fd.close()
