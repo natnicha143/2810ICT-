@@ -2,15 +2,24 @@ import re
 import queue
 from warnings import warn
 
-def populate_dictionary(filename, length):
-  fname = "dictionary.txt"
-  file = open(fname)
+def populate_dictionary(filename, length, banned_filename=""):
+  # If the user desides to use banned words
+  banned_words = []
+  if banned_filename != "":
+    banned_fd = open(banned_filename)
+    lines = banned_fd.readlines()
+    for line in lines:
+      if len(line.rstrip()) == length:
+        banned_words.append(line.rstrip())
+    banned_fd.close()
+  # Read in the words from dictionary 
+  file = open(filename)
   lines = file.readlines()
   # Populate the dictionary
   words = []
   for line in lines:
     word = line.rstrip()
-    if len(word) == length:
+    if len(word) == length and word not in banned_words:
       words.append(word)
   file.close()
   return words
@@ -21,6 +30,7 @@ def same(item, target):
 
 
 def build(pattern, words, seen, path):
+  print(pattern)
   return [word for word in words
           if re.search(pattern, word) and word not in seen.keys() and
           word not in path]
@@ -111,22 +121,36 @@ if __name__ == "__main__":
   start_word = user_input[0]
   end_word = user_input[1]
 
+  # Used Banned Words File?
+  banned_filename = input("Please enter a filename for banned words (without .txt). (Press enter if not required): ")
+  if len(banned_filename) != 0:
+    banned_fd = open(banned_filename)
+    banned_fd.close()
+    banned = True
+  else:
+    banned = False
+
   # Generate the word list
-  words = populate_dictionary(filename, len(start_word))
+  if banned:
+    words = populate_dictionary(filename, len(start_word), banned_filename)
+  else:
+    words = populate_dictionary(filename, len(start_word))
   # Check if the target exists before searching for a path
   if end_word not in words:
-    warn("Target word does not exist in the dictionary", UserWarning)
+    warn("Target word does not exist in the dictionary (You may have banned it?)", UserWarning)
     quit()
 
-
-  path = [start_word]
-  seen = {start_word: True}
-
-  path = short_path(words, start_word, end_word)
-  path.append(end_word)
-  print(path)
-  # if find(start_word, words, seen, end_word, path):
-  #   path.append(end_word)
-  #   print(len(path) - 1, path)
-  # else:
-  #   print("No path found")
+  # Short or long path?
+  path_option = input("Enter 'y' if you would like to evaluate a mininal path (Press enter if not required): ")
+  if path_option.lower() == "y":
+    path = short_path(words, start_word, end_word)
+    path.append(end_word)
+    print(len(path) - 1, path, sep='\t')
+  else:
+    path = [start_word]
+    seen = {start_word: True}
+    if find(start_word, words, seen, end_word, path):
+      path.append(end_word)
+      print(len(path) - 1, path, sep='\t')
+    else:
+      print("No path found")
