@@ -95,16 +95,63 @@ class TestHelperFunctions(unittest.TestCase):
         self.assertTrue(all (x in ['load', 'gold', 'toad'] for x in adjacent))
         self.assertTrue(not all (x in ['here', 'that', 'this', 'mild', 'wild'] for x in adjacent))
         # Test with visited words
-        print(adjacent_visited)
         self.assertTrue('gold' in adjacent_visited)
         self.assertTrue(not all(x in ['here', 'that', 'this', 'mild', 'wild', 'load', 'toad'] for x in adjacent_visited))
 
 
     def test_build_function(self):
-        print()
+        ### Arrange
+        source_word = "abcd"
+        words = ["xbcd", "axcd", "abxd", "abcx", "vbcd"]
+        visited = {"vbcd"}
+
+        ### Act
+        
+
+        ### Assert
+
+
     
     def test_populate_dictionary_function(self):
-        print()
+        ### Arrange
+        # File contains
+        # 3x | 3 Letter Words
+        # 4x | 4 Letter Words
+        # 5x | 5 Letter Words
+        test_word_file = "test_data/subset.txt"
+
+        ### Act
+        words_3 = word_ladder.populate_dictionary(test_word_file, 3)
+        words_4 = word_ladder.populate_dictionary(test_word_file, 4)
+        words_5 = word_ladder.populate_dictionary(test_word_file, 5)
+
+        ### Assert
+        self.assertEqual(len(words_3), 3)
+        self.assertEqual(len(words_4), 4)
+        self.assertEqual(len(words_5), 5)
+
+
+    def test_populate_dictionary_function_banned_words(self):
+        ### Arrange
+        # File contains
+        # 3x | 3 Letter Words
+        # 4x | 4 Letter Words
+        # 5x | 5 Letter Words
+        test_word_file = "test_data/subset.txt"
+        banned_word_file = "test_data/subset_banned.txt"
+
+        ### Act
+        words_3 = word_ladder.populate_dictionary(test_word_file, 3, banned_word_file)
+        words_4 = word_ladder.populate_dictionary(test_word_file, 4, banned_word_file)
+        words_5 = word_ladder.populate_dictionary(test_word_file, 5, banned_word_file)
+
+        ### Assert
+        self.assertEqual(len(words_3), 2)
+        self.assertTrue("are" not in words_3)
+        self.assertEqual(len(words_4), 3)
+        self.assertTrue("then" not in words_4)
+        self.assertEqual(len(words_5), 4)
+        self.assertTrue("speck" not in words_5)
 
 
 
@@ -116,6 +163,8 @@ class TestSystem():
 
     def test_full_system_bfs(self):
         print()
+
+
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)
