@@ -26,7 +26,7 @@ class TestUserInput(unittest.TestCase):
                 word_ladder.init()
     
     # Mock Input
-    @patch('builtins.input', side_effect=['he_s', 'as_da'])
+    @patch('builtins.input', side_effect=['he_s', 's_da'])
     def test_user_input3(self, input):
         # Assert that the raised UserWarning is correct for the test case
         with self.assertWarnsRegex(UserWarning, 'Input words cannot contain numbers or special characters'):
