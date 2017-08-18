@@ -28,13 +28,13 @@ def populate_dictionary(filename, length, banned_filename=""):
 def same(item, target):
   return len([c for (c, t) in zip(item, target) if c == t])
 
-
+# Requires regex pattern
 def build(pattern, words, seen, path):
-  print(pattern)
   return [word for word in words
           if re.search(pattern, word) and word not in seen.keys() and
           word not in path]
 
+# Does not require regex pattern | Faster implementation for bfs
 def build_basic(words, visited, current_word):
   neighbors = set()
   for word in words:
@@ -45,21 +45,22 @@ def build_basic(words, visited, current_word):
 
 
 def find(word, words, seen, target, path, outer_fitness=0):
-  current_path = []
+  adjacent = []
   for i in range(len(word)):
-    current_path += build(word[:i] + "." + word[i + 1:], words, seen, current_path)
-  if len(current_path) == 0:
+    adjacent += build(word[:i] + "." + word[i + 1:], words, seen, adjacent)
+  if len(adjacent) == 0:
     return False
   # Sorted in reverse to put best candidate words first
-  current_path = sorted([(same(w, target), w) for w in current_path], reverse=True)
+  adjacent = sorted([(same(w, target), w) for w in adjacent], reverse=True)
+
   # Looks for target word
-  for (fitness, item) in current_path:
+  for (fitness, item) in adjacent:
     if fitness == len(target) - 1:
       path.append(item)
       return True
     seen[item] = True
   # Otherwise recurses through words in current path
-  for (fitness, item) in current_path:
+  for (fitness, item) in adjacent:
     if fitness >= outer_fitness:
       path.append(item)
       if find(item, words, seen, target, path, fitness):

@@ -103,13 +103,17 @@ class TestHelperFunctions(unittest.TestCase):
         ### Arrange
         source_word = "abcd"
         words = ["xbcd", "axcd", "abxd", "abcx", "vbcd"]
-        visited = {"vbcd"}
+        visited = dict.fromkeys(["vbcd"])
+        adjacent = []
 
         ### Act
+        # Iterate the wildcard through each position of the regex pattern
+        for i in range(len(source_word)):
+            adjacent += word_ladder.build(source_word[:i] + "." + source_word[i + 1:], words, visited, adjacent)
         
-
         ### Assert
-
+        self.assertTrue(all (x in ["xbcd", "axcd", "abxd", "abcx"] for x in adjacent))
+        self.assertTrue("vbcd" not in adjacent)
 
     
     def test_populate_dictionary_function(self):
