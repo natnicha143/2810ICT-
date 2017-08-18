@@ -261,12 +261,12 @@
 			No. & Test Case & Expected Results & Actual Results \\
 			\hline
 			2.2 & Test build basic function & All words that are adjacent to the start word and not visited in dictionary, are in the list returned by the function. Checks correctness of function with and without keys in visited dictionary. & As expected. \\
-			2.3 & Test build function &   & As expected\\
+			2.3 & Test build function & Builds the list of neighboring elements correctly by returning a list with no words that have been seen or are in the current path.  & As expected\\
 			2.4 & Test populate dictionary function & Reads in dictionary filename and checks the correct number of words present for each word length & As expected. \\
 			2.5 & Test populate dictionary function takes list of banned words & Reads in banned words list, and asserts that banned words are not present in the populated lists. & As expected. \\
 			3.0 & \textbf{System tests} &  &  \\
-			3.1 & Test full system recursively &  & \\
-			3.2 & Test full system breadth-first search &  &  \\
+			3.1 & Test full system using recursive algorithm with mock input & Reads in required input and outputs a valid path from start to target word & As expected. \\
+			3.2 & Test full system using breadth-first search with mock input & Reads in required input and outputs the shortest path from start to target word & As expected. \\
 			\hline
 		\end{tabular}
 	\newpage
