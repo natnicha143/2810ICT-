@@ -2,6 +2,7 @@ import unittest
 import word_ladder
 import re
 from unittest.mock import patch
+from io import StringIO
 
 
 import logging
@@ -159,14 +160,29 @@ class TestHelperFunctions(unittest.TestCase):
 
 
 
-class TestSystem():
+class TestSystem(unittest.TestCase):
     # Mock all inputs
-    def test_full_system_recursive(self):
-        print()
+    @patch('builtins.input', side_effect=['dictionary', 'lead', 'gold', '', ''])
+    def test_full_system_recursive_LG(self, input):
+        ### Act
+        # Patch sys.stdout to a StringIO object called fake_stdout
+        with patch('sys.stdout', new=StringIO()) as fake_stdout:
+            word_ladder.run()
+        
+        ### Assert
+        self.assertEqual("3\t['lead', 'load', 'goad', 'gold']\n", fake_stdout.getvalue())
 
 
-    def test_full_system_bfs(self):
-        print()
+    # Mock all inputs
+    @patch('builtins.input', side_effect=['dictionary', 'lead', 'gold', '', 'y'])
+    def test_full_system_bfs(self, input):
+        ### Act
+        # Patch sys.stdout to a StringIO object called fake_stdout
+        with patch('sys.stdout', new=StringIO()) as fake_stdout:
+            word_ladder.run()
+
+        ### Assert
+        self.assertEqual("3\t['lead', 'load', 'goad', 'gold']\n", fake_stdout.getvalue())
 
 
 

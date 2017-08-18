@@ -106,8 +106,9 @@ def init():
     quit()
   return [start_word, end_word]
 
-# Main
-if __name__ == "__main__":
+
+# Add a function so that the module can be callable
+def run():
   # Get dictionary file name
   filename = input("Please enter dictionary name (without .txt): ")
   filename += ".txt"
@@ -155,3 +156,9 @@ if __name__ == "__main__":
       print(len(path) - 1, path, sep='\t')
     else:
       print("No path found")
+
+# Main
+if __name__ == "__main__":
+  run()
+
+  
