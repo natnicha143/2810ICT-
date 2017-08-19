@@ -161,7 +161,7 @@ class TestHelperFunctions(unittest.TestCase):
 
 
 class TestSystem(unittest.TestCase):
-    # Mock all inputs
+    # Mock all inputs | Runs in recursive mode
     @patch('builtins.input', side_effect=['dictionary', 'lead', 'gold', '', ''])
     def test_full_system_recursive_LG(self, input):
         ### Act
@@ -173,7 +173,7 @@ class TestSystem(unittest.TestCase):
         self.assertEqual("3\t['lead', 'load', 'goad', 'gold']\n", fake_stdout.getvalue())
 
 
-    # Mock all inputs
+    # Mock all inputs | Runs in BFS mode
     @patch('builtins.input', side_effect=['dictionary', 'lead', 'gold', '', 'y'])
     def test_full_system_bfs(self, input):
         ### Act

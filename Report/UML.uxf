@@ -4,23 +4,31 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>560</x>
-      <y>240</y>
-      <w>370</w>
-      <h>200</h>
+      <x>570</x>
+      <y>250</y>
+      <w>440</w>
+      <h>310</h>
     </coordinates>
     <panel_attributes>word_ladder
 --
++ filename : string
++ user_input : list
++ banned_filename : string
++ banned : boolean
 + words[]: List
 + start_word: String
 + end_word: String
 + path: List
 + seen: Dictionary
 --
-+ populate_dictionary(filename, length)
-+ same(item, target)
-+ build(pattern, words, seen, path)
-+ find(word, words, seen, target, path, outer_fitness)
++ populate_dictionary(filename, length): List
++ same(item, target): int
++ build(pattern, words, seen, path) : List
++ build_basic(words, visited, current_word) : Set
++ find(word, words, seen, target, path, outer_fitness) : Boolean
++ short_path(words, start_word, target_word) : List
++ init() : List
++ run() : void
 
 
 
