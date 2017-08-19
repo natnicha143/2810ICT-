@@ -171,11 +171,22 @@ class TestSystem(unittest.TestCase):
         
         ### Assert
         self.assertEqual("3\t['lead', 'load', 'goad', 'gold']\n", fake_stdout.getvalue())
+    
+    @patch('builtins.input', side_effect=['dictionary', 'hide', 'seek', '', ''])
+    def test_full_system_recursive_HS(self, input):
+        ### Act
+        # Patch sys.stdout to a StringIO object called fake_stdout
+        with patch('sys.stdout', new=StringIO()) as fake_stdout:
+            word_ladder.run()
+        
+        ### Assert
+        # Check that it takes 6 steps
+        self.assertEqual("6", fake_stdout.getvalue()[0])
 
 
     # Mock all inputs | Runs in BFS mode
     @patch('builtins.input', side_effect=['dictionary', 'lead', 'gold', '', 'y'])
-    def test_full_system_bfs(self, input):
+    def test_full_system_bfs_LG(self, input):
         ### Act
         # Patch sys.stdout to a StringIO object called fake_stdout
         with patch('sys.stdout', new=StringIO()) as fake_stdout:
@@ -183,6 +194,18 @@ class TestSystem(unittest.TestCase):
 
         ### Assert
         self.assertEqual("3\t['lead', 'load', 'goad', 'gold']\n", fake_stdout.getvalue())
+    
+    # Mock all inputs | Runs in BFS mode
+    @patch('builtins.input', side_effect=['dictionary', 'hide', 'seek', '', 'y'])
+    def test_full_system_bfs_HS(self, input):
+        ### Act
+        # Patch sys.stdout to a StringIO object called fake_stdout
+        with patch('sys.stdout', new=StringIO()) as fake_stdout:
+            word_ladder.run()
+
+        ### Assert
+        # Check that it takes 6 steps
+        self.assertEqual("6", fake_stdout.getvalue()[0])
 
 
 
