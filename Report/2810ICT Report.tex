@@ -245,6 +245,7 @@
 		\par 
 		The development of this program required the use of version control software to evenly distribute tasks, as well as monitor the changes through source history. GitHub was created as an online hosting solution for git repositories. GitHub was used throughout this project to aid in collaboration between group members. GitHub was useful as it allowed group members to track changes and resolve any merge conflicts in a meaningful and lossless manner. Version control was used to ensure each developer could work on tasks individually. git records a log of past commits pushed to the repository which allows for backtracking of file versions.
 		
+		\subsubsection{Version Control History / Log}
 		\begin{tabular}{ | p{2cm} | p{13cm} | }
 			\hline
 				User & Activity \\
@@ -277,7 +278,7 @@
 				\hline 
 			\end{tabular}
 			
-			\begin{tabular}{ | p{2cm} | p{13cm} | }
+		\begin{tabular}{ | p{2cm} | p{13cm} | }
 				\hline
 			Natnicha & Merge branch 'master' of github.com/ZaymonFC/2810ICT\_Assignment \\ 
 			Natnicha & Added requirement acceptance test \& user instructions. \\ 
@@ -306,7 +307,8 @@
 			
 		\end{tabular}
 		
-		\par\vspace{1cm}\small Note: Repository is private to prevent plagiarism. 
+		\par\vspace{1cm}\small Note: Repository is private to prevent plagiarism. \textbar{} This log was created by using the command \begin{lstlisting} 
+		git log --pretty=format:`%h;%an;%s' > ./log.csv\end{lstlisting}
 	
 	\subsection{Unit Testing}
 
@@ -357,6 +359,7 @@
 			5 & Display an error message if source or target do not exist within the dictionary & Full & Pass & \\
 			6 & Display an error message if input words contain numbers or special characters & Full & Pass & \\
 			7 & Input words are case insensitive & Full & Pass & \\
+			8 & When user selects shortest path option the path returned is optimal  & Full & Pass & \\ 
 			\hline
 		\end{tabular}
 	
