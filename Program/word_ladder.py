@@ -28,6 +28,7 @@ def populate_dictionary(filename, length, banned_filename=""):
 def same(item, target):
   return len([c for (c, t) in zip(item, target) if c == t])
 
+
 # Requires regex pattern
 def build(pattern, words, seen, path):
   return [word for word in words

@@ -1,0 +1,49 @@
+ZaymonFC,Finished testfile
+ZaymonFC,Merge branch 'master' of https://github.com/ZaymonFC/2810ICT_Assignment
+ZaymonFC,Added diagrams and function description
+natnicha143,Added modifications to full system tests.
+natnicha143,Added more unit tests.
+ZaymonFC,Added system tests and put the main method contents of word ladder into a run function
+ZaymonFC,Added build test
+ZaymonFC,Merge conflict resolved
+ZaymonFC,Finished adding data structures and list of functions.
+Natnicha,Edited acceptance test and unit test in document.
+Natnicha,Merge branch 'master' of https://github.com/ZaymonFC/2810ICT_Assignment
+Natnicha,Added unit tests to report.
+ZaymonFC,Added tests and added the banned words implementation to the word ladder
+ZaymonFC,Removed TestCase
+ZaymonFC,Added comments for some test cases in testfile.py
+ZaymonFC,Added multiple unit tests for different functions in word_ladder
+ZaymonFC,Added tests for user input in testfile.py
+ZaymonFC,Logged work
+ZaymonFC,Fixed BFS and implemented a queue data type
+ZaymonFC,Added breadth first search for shortest path
+Natnicha,Resolved merge conflict
+Natnicha,Modified unit test section.
+ZaymonFC,Resolved merge conflict
+ZaymonFC,Added test skeleton for input validation
+Natnicha,Fixed spelling and name errors
+Natnicha,Merge branch 'master' of https://github.com/ZaymonFC/2810ICT_Assignment
+Natnicha,Added requirement acceptance test & user instructions.
+ZaymonFC,Added section describing all functions in the program
+ZaymonFC,"Created UML and logical block diagrams, added to report"
+ZaymonFC,Merge branch 'master' of https://github.com/ZaymonFC/2810ICT_Assignment
+ZaymonFC,Modified test file and fixed formatting in report
+Natnicha,Merge branch 'master' of https://github.com/ZaymonFC/2810ICT_Assignment
+Natnicha,Modified test table
+ZaymonFC,Fixed algorithm to find short paths by limiting reverse progress
+ZaymonFC,Merge branch 'master' of https://github.com/ZaymonFC/2810ICT_Assignment
+ZaymonFC,Improved performance by reversing sorting direction of fitness function
+Natnicha,Added version control section & Unit test tables
+Natnicha,Merge branch 'master' of https://github.com/ZaymonFC/2810ICT_Assignment
+Natnicha,Added unittest cases
+ZaymonFC,Refactored word_ladder.py to validate user input
+Natnicha,Modified listing for user requirements
+ZaymonFC,Added unittest file and added test ideas to README.md
+ZaymonFC,Added .gitignore file and removed postcompile latex objects
+ZaymonFC,Merge branch 'master' of https://github.com/ZaymonFC/2810ICT_Assignment
+ZaymonFC,Modified report preamble to remove redundant packages
+Natnicha,Added headings and user requirements
+ZaymonFC,Added LaTeX template for assigment documentation
+ZaymonFC,Added program files and created project directory structure
+ZaymonFC,Initial Commit

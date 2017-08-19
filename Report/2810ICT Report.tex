@@ -60,26 +60,26 @@
 \pagebreak
 \section{Software Technologies Assignment 1}
 \subsection{Problem Statement}
-	\par 
+	\par Word ladder is a program to go from a start word to a goal word of the same length by changing only one
+	letter at a time. Another program file was implemented to test the functionality of the word ladder. The challenge was that every intermediary word must be present in a provided dictionary I.e. lead -$>$ load -$>$ goad -$>$ gold in 3 steps. The test files used the python unittest module. The users had the option of supplying a list of banned words, and selecting the shortest path for each start to goal word. 
 	
 \subsection{User Requirements}
 	\textbf{The following list itemizes the user requirements for the implementation of the Ladder-gram program}
 	\begin{itemize}
-		\item The user should be able to interact with the program by specifying the dictionary file name$($without the .txt extension$)$
+		\item The user should be able to interact with the program by specifying the dictionary file name $($without the .txt extension$)$.
 		\item The user should be able to interact with the program by specifying the source and target word.
-		\item The user should be able to supply a list of words that cannot be used in the path solution by specifying the file name$($without the .txt extension$)$ and placing it in the same directory as the program file.
-		\item The user will be displayed with the shortest path from source word to target word as the solution.
+		\item The user should be able to supply a list of words that cannot be used in the path solution by specifying the file name and placing it in the same directory as the program file.
+		\item The user will have the option of choosing to evaluate the shortest path from source word to target word as the solution.
 	\end{itemize}
 	
 \subsection{Software Requirements}
 	\textbf{The following list itemizes the software requirements for the implementation of the Ladder-gram program}
 	\begin{itemize}
-		\item The program will notify the user if the inputs are invalid
-		\item The program will notify the user if a solution was found
-		\item If a valid solution is found the program will print it to the console
-		\item The program will default to printing the shortest path to the console
-		\item If the user chooses to input a list of banned words, the program will remove those words from the solution's list
-		\item The program will report the length of the solution found 
+		\item The program will notify the user if the inputs are invalid and the program will exit.
+		\item The program will notify the user if a solution was found.
+		\item If a valid solution is found the program will print it to the console along with the length of the solution.
+		\item If the user chooses to input a list of banned words, the program will remove those words from the working dictionary. 
+		\item The program will evaluate the shortest solution if the user requests.
 	\end{itemize}
 	\pagebreak
 	
@@ -124,11 +124,11 @@
 			\par Returns: Integer
 		\item
 			\textbf{build}
-			\textbar{}  Function that returns a list of all words that are one letter away from the last word in the path and have not been seen before.
+			\textbar{}  Function that returns a list of all words that satisfy the regex pattern provided, providing that the words are not in the seen dictionary or path. 
 			    Function also calculates the fitness of each word and adds it with the word in a tuple.
 			\par Input Parameters: pattern $($regex pattern$)$, words, seen, path
 			\par Side Effects: None
-			\par Returns: List of tuples
+			\par Returns: List of strings
 		\item 
 			\textbf{build\_basic}
 			\textbar{} Similar to build function except it does not return a tuple with fitness of the word.  
@@ -214,27 +214,101 @@
 						\item build
 					\end{itemize}
 		\end{enumerate}
-	
 		
+	
 	\subsubsection{Detailed Design}
 	
 	
 	\textbf{Generate Solutions Pseudo-code}
 	
-	\begin{comment}
-			\begin{figure}[h]
-			\lstinputlisting[language=Python]{pseudocode_New.py}
-			\caption{Psuedo-code for the generate solutions algorithm}
-			\end{figure}
-	\end{comment}
 
-	
-	\pagebreak
+		\begin{figure}[h]
+			\lstinputlisting[language=Python, firstline=2, lastline=4]{pseudo.txt}
+			\caption{Psuedo-code for the build algorithm}
+		\end{figure}
+		\begin{figure}[!h]
+			\lstinputlisting[language=Python, firstline=7, lastline=12]{pseudo.txt}
+			\caption{Psuedo-code for the build basic algorithm}
+		\end{figure}
+		\begin{figure}[!h]
+			\lstinputlisting[language=Python, firstline=15, lastline=32]{pseudo.txt}
+			\caption{Psuedo-code for the find $($recursive$)$ algorithm}
+		\end{figure}
+		\begin{figure}[!h]
+			\lstinputlisting[language=Python, firstline=35, lastline=52]{pseudo.txt}
+			\caption{Psuedo-code for the short path $($breadth-first search$)$ algorithm}
+		\end{figure}
+
+	\newpage 
+ 
 	\subsection{Configuration Management and Version Control}
 		\par 
-		The development of this program required the use of version control software to evenly distribute tasks, as well as monitor the changes through a log. GitHub was designed for users as a way to manage documents, programs and other information. GitHub was neccessary for sharing of files and the ability to compare files and identify differences and merge changes if needed prior to commit. Version control was used to ensure each developer could work on tasks individually as well, even after finishing a formal collaboration. The software records a log of past commits pushed to the repository which allows for backtracking of file versions.
+		The development of this program required the use of version control software to evenly distribute tasks, as well as monitor the changes through source history. GitHub was created as an online hosting solution for git repositories. GitHub was used throughout this project to aid in collaboration between group members. GitHub was useful as it allowed group members to track changes and resolve any merge conflicts in a meaningful and lossless manner. Version control was used to ensure each developer could work on tasks individually. git records a log of past commits pushed to the repository which allows for backtracking of file versions.
+		
+		\begin{tabular}{ | p{2cm} | p{13cm} | }
+			\hline
+				User & Activity \\
+			\hline
+			ZaymonFC & Finished testfile \\ 
+			ZaymonFC & Merge branch 'master' of github.com/ZaymonFC/2810ICT\_Assignment \\ 
+			ZaymonFC & Added diagrams and function description \\ 
+			Natnicha & Added modifications to full system tests. \\ 
+			Natnicha & Added more unit tests. \\ 
+			ZaymonFC & Added system tests and put the main method contents of word ladder into a run function \\ 
+			ZaymonFC & Added build test \\ 
+			ZaymonFC & Merge conflict resolved \\ 
+			ZaymonFC & Finished adding data structures and list of functions. \\ 
+			Natnicha & Edited acceptance test and unit test in document. \\ 
+			Natnicha & Merge branch 'master' of github.com/ZaymonFC/2810ICT\_Assignment \\ 
+			Natnicha & Added unit tests to report. \\ 
+			ZaymonFC & Added tests and added the banned words implementation to the word ladder \\ 
+			ZaymonFC & Removed TestCase \\ 
+			ZaymonFC & Added comments for some test cases in testfile.py \\ 
+			ZaymonFC & Added multiple unit tests for different functions in word\_ladder \\ 
+			ZaymonFC & Added tests for user input in testfile.py \\ 
+			ZaymonFC & Logged work \\ 
+			ZaymonFC & Fixed BFS and implemented a queue data type \\ 
+			ZaymonFC & Added breadth first search for shortest path \\ 
+			Natnicha & Resolved merge conflict \\ 
+			Natnicha & Modified unit test section. \\ 
+			ZaymonFC & Resolved merge conflict \\ 
+			ZaymonFC & Added test skeleton for input validation \\ 
+			Natnicha & Fixed spelling and name errors \\ 
+				\hline 
+			\end{tabular}
+			
+			\begin{tabular}{ | p{2cm} | p{13cm} | }
+				\hline
+			Natnicha & Merge branch 'master' of github.com/ZaymonFC/2810ICT\_Assignment \\ 
+			Natnicha & Added requirement acceptance test \& user instructions. \\ 
+			ZaymonFC & Added section describing all functions in the program \\ 
+			ZaymonFC & Created UML and logical block diagrams, added to report \\ 
+			ZaymonFC & Merge branch 'master' of github.com/ZaymonFC/2810ICT\_Assignment \\ 
+			ZaymonFC & Modified test file and fixed formatting in report \\ 
+			Natnicha & Merge branch 'master' of github.com/ZaymonFC/2810ICT\_Assignment \\ 
+			Natnicha & Modified test table \\ 
+			ZaymonFC & Fixed algorithm to find short paths by limiting reverse progress \\ 
+			ZaymonFC & Merge branch 'master' of github.com/ZaymonFC/2810ICT\_Assignment \\ 
+			ZaymonFC & Improved performance by reversing sorting direction of fitness function \\ 
+			Natnicha & Added version control section \& Unit test tables \\ 
+			Natnicha & Merge branch 'master' of github.com/ZaymonFC/2810ICT\_Assignment \\ 
+			Natnicha & Added unittest cases \\ 
+			ZaymonFC & Refactored word\_ladder.py to validate user input \\ 
+			Natnicha & Modified listing for user requirements \\ 
+			ZaymonFC & Added unittest file and added test ideas to README.md \\ 
+			ZaymonFC & Added .gitignore file and removed postcompile latex objects \\ 
+			ZaymonFC & Merge branch 'master' of github.com/ZaymonFC/2810ICT\_Assignment \\ 
+			ZaymonFC & Modified report preamble to remove redundant packages \\ 
+			Natnicha & Added headings and user requirements \\ 
+			ZaymonFC & Added LaTeX template for assignment documentation \\ 
+			ZaymonFC & Added program files and created project directory structure \\ 
+			ZaymonFC & Initial Commit \\ \hline
+			
+		\end{tabular}
+		
+		\par\vspace{1cm}\small Note: Repository is private to prevent plagiarism. 
 	
-	\subsection{Unit Test}
+	\subsection{Unit Testing}
 
 
 		\begin{tabular}{ |p{0.5cm}|p{5cm}|p{5cm}|p{5cm}| }
@@ -242,35 +316,35 @@
 			No. & Test Case & Expected Results & Actual Results \\
 			\hline
 			1.0 & \textbf{Test User Input} &  & \\
-			1.1 & Input contains number: 1. & Program displays error message: ``Source or target input words cannot contain numbers or special characters" and system exits. & As expected.\\
-			1.2 & Source or target input contains special character `@'. & Program displays error message: ``Input words cannot contain numbers or special characters" and system exits. & As expected. \\
-			1.3 & Source or target input contains special character: `\_'. & Program displays error message: ``Input words cannot contain numbers or special characters" and system exits. & As expected. \\
-			1.4 & Source or target input contains number: 3. & Program displays error message: ``Input words cannot contain numbers or special characters and system exits." & As expected. \\
-			1.5 & Source and target words are the same & System prints error: ``Start and target words cannot be the same." & As expected. \\
-			1.6 & Target word input is of different length to source word. & System prints error message: ``Start and target words must be the same length." & As expected \\
-			1.7 & Check whether init function returns source and target word after input is validated & Function returns source word as the first element in the list and target as second. & As expected.\\
+			1.1 & Source word contains number. & Program displays error message: ``Source or target input words cannot contain numbers or special characters" and system exits. & As expected.\\
+			1.2 & Target word input contains special character. & Program displays error message: ``Input words cannot contain numbers or special characters" and system exits. & As expected. \\
+			1.3 & Source word input contains special character. & Program displays error message: ``Input words cannot contain numbers or special characters" and system exits. & As expected. \\
+			1.4 & Target word input contains number. & Program displays error message: ``Input words cannot contain numbers or special characters and system exits." & As expected. \\
+			1.5 & Source and target words are the same. & System prints error: ``Start and target words cannot be the same." & As expected. \\
+			1.6 & Target word input is of different length to source word. & System prints error message: ``Start and target words must be the same length." & As expected. \\
+			1.7 & Check whether init function returns source and target word after input is validated. & Function returns source word as the first element in the list and target as second. & As expected.\\
 			2.0 & \textbf{Test Helper Functions} &  &  \\
-			2.1 & Test same function and whether it returns the correct number of identical letters & Test case returns true if same function returns 4 for `lead' \& `lead', 3 for `lead' \& `mead' and false if `hello' \& `there' equals 0. & As expected. \\
+			2.1 & Test same function and whether it returns the correct number of identical letters. & Test case returns true if same function returns 4 for `lead' \& `lead', 3 for `lead' \& `mead' and false if `hello' \& `there' equals 0. & As expected. \\
 			\hline
 		\end{tabular}
 
-			\pagebreak[4]
+		\pagebreak[4]
 			
 		\begin{tabular}{ |p{0.5cm}|p{5cm}|p{5cm}|p{5cm}| } 
 			\hline
 			No. & Test Case & Expected Results & Actual Results \\
 			\hline
 			2.2 & Test build basic function & All words that are adjacent to the start word and not visited in dictionary, are in the list returned by the function. Checks correctness of function with and without keys in visited dictionary. & As expected. \\
-			2.3 & Test build function & Builds the list of neighboring elements correctly by returning a list with no words that have been seen or are in the current path.  & As expected\\
-			2.4 & Test populate dictionary function & Reads in dictionary filename and checks the correct number of words present for each word length & As expected. \\
-			2.5 & Test populate dictionary function takes list of banned words & Reads in banned words list, and asserts that banned words are not present in the populated lists. & As expected. \\
+			2.3 & Test build function. & Builds the list of neighboring elements correctly by returning a list of words that satisfy the regex pattern. The function will also not return words that have been seen or are in the current path.  & As expected.\\
+			2.4 & Test populate dictionary function takes a dictionary name. & Reads in dictionary filename and checks the correct number of words present for each word length. & As expected. \\
+			2.5 & Test populate dictionary function takes list of banned words. & Reads in banned words list, and asserts that banned words are not present in the populated lists. & As expected. \\
 			3.0 & \textbf{System tests} &  &  \\
-			3.1 & Test full system using recursive algorithm with mock input & Reads in required input and outputs a valid path from start to target word & As expected. \\
-			3.2 & Test full system using breadth-first search with mock input & Reads in required input and outputs the shortest path from start to target word & As expected. \\
+			3.1 & Test full system using recursive algorithm with mock input and output. & Reads in input and outputs a valid path from start to target word & As expected. \\
+			3.2 & Test full system using breadth-first search with mock input and output. & Reads in required input and outputs the shortest path from start to target word. & As expected. \\
 			\hline
 		\end{tabular}
 	\newpage
-	\subsection{Requirement Acceptance Test}
+	\subsection{Requirement Acceptance Testing}
 	
 		\begin{tabular}{ |p{0.5cm}|p{7.25cm}|p{2.5cm}|p{2.5cm}|p{2cm}| }
 			\hline
@@ -278,7 +352,7 @@
 			\hline
 			1 & The program will be able to read in the dictionary by specifying its name & Full & Pass &  \\
 			2 & Display an error message if file name is invalid & Full & Pass  & \\
-			3 & Read in a list of supplied words that are banned from the user & Full & Pass & \\
+			3 & Read in a list of supplied words that are banned from the user by specifying the filename & Full & Pass & \\
 			4 & Display an error message if source and target word are not of equal lengths & Full & Pass & \\
 			5 & Display an error message if source or target do not exist within the dictionary & Full & Pass & \\
 			6 & Display an error message if input words contain numbers or special characters & Full & Pass & \\

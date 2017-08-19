@@ -1,0 +1,53 @@
+# Build Function
+Algorithm build(string pattern, list words, dict seen, path):
+    return (list<string>) word for word in words
+        if RegularExpression_Search(pattern, word) and word not in seen or path
+
+# Build_Basic Function
+Algorithm build_basic(list<string> words, dict visited, string current_word):
+    neighbors -> new set
+    for word in words:
+        if visited not contains word:
+            neighbors +-> word
+    return neighbors
+
+# Find_Recursive
+Algorithm find(string word, list<string> words, dict seen, string target, list<string> path, int outer_fitness):
+    adjacent -> new list
+    for i in length of word:
+        adjacent +-> build(regex_pattern, words, seen, adjacent)
+    if length of adjacent is 0:
+        return False
+    sort adjacent by fitness (order descending)
+    for (fitness, item) in adjacent:
+        if fitness == target length - 1:
+            path +-> item
+            return True
+        seen[item] = True
+    for (int fitness, item) in adjacent:
+        if fitness >= outer_fitness:
+            path +-> item
+            if find(item, words, seen, target, path, fitness):
+                return True
+            path pop
+
+# Find_BFS
+Algorithm short_path(words, start_word, target_word):
+    q -> new Queue
+    visited -> new dict
+    q +-> (list)[start_word]
+    while q not empty:
+        path = q->get()
+        vertex = (string) path[length of path -1]
+        if vertex not in visited:
+            visited[vertex] -> True
+        if same(vertex, target_word) is length of target_word -1:
+            return path
+        (set) neighbors -> build_basic(words, visited, vertex)
+        for neighbor in neighbors:
+            if neighbor not in visited:
+                visited[neighbor] -> True
+                new_path = (list) path
+                new_path +-> neighbor
+                q +-> new_path
+                
